@@ -9,5 +9,6 @@ const pw = process.env.MONGODB_PW;
 
 export default {
     port: 8080,
-    dbUri: `mongodb+srv:${un}:${pw}@cluster0.njwfez1.mongodb.net/?retryWrites=true&w=majority`
+    dbUri: `mongodb+srv:${un}:${pw}@cluster0.njwfez1.mongodb.net/?retryWrites=true&w=majority`,
+    saltWorkFactor: 10,
 };
