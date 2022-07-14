@@ -1,4 +1,5 @@
 import { Request, Response } from 'Express';
+import { omit } from 'lodash';
 import { createUser } from '../service/user.service';
 import { CreateUserInput } from '../schema/user.schema';
 import logger from '../utils/logger';
@@ -9,7 +10,8 @@ import logger from '../utils/logger';
 export async function createUserHandler(req: Request<{}, {}, CreateUserInput['body']>, res: Response) {
     try {
         const user = await createUser(req.body);
-        return user;
+        //In postman we dont want the password back, so we'll omit it.
+        return res.send(omit(user.toJSON(), 'password'));
     } catch (e: any) {
         logger.error(e);
         return res.status(409).send(e.message);
