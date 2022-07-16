@@ -14,3 +14,14 @@ export async function createUser(input: DocumentDefinition<Omit<User, 'createdAt
         throw new Error(e);
     }
 }
+// When we destructure props in TS, you assign the typing following the destructuring
+export async function validatePassword({ email, password }: {
+    email: string; password: string;
+}) {
+
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+        return false;
+    }
+}
