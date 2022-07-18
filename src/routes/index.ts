@@ -1,4 +1,5 @@
 import { Express, Request, Response } from 'express';
+import { createUserSessionHandler } from '../controller/session.controller';
 import { createUserHandler } from '../controller/user.controller';
 import validateResource from '../middleware/validateResource';
 import { createUserSchema } from '../schema/user.schema';
@@ -13,6 +14,9 @@ function routes(app: Express) {
 
     //In our app.post we're passing our middleware function and sending it a schema
     app.post("/api/users", validateResource(createUserSchema), createUserHandler);
+
+    //Checking out sessions route
+    app.post("/api/sessions", validateResource(createUserSchema), createUserSessionHandler);
 
 }
 

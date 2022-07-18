@@ -11,6 +11,8 @@ export default {
     port: 8080,
     dbUri: `mongodb+srv:${un}:${pw}@cluster0.njwfez1.mongodb.net/?retryWrites=true&w=majority`,
     saltWorkFactor: 10,
+    accessTokenTtl: `15m`,
+    refreshTokenTtl: '1y',
     publicKey: `-----BEGIN PUBLIC KEY-----
     MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9M2dPlWd7swAFHMcOQzq7UvMh
     VXTzj+uUfjIRzXI+e78TzWh34qxEQrOXBKpJaJFkZ1R3w3W0OY9dKUiNEQVmPEBh
