@@ -11,14 +11,13 @@ export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
     //We're using our privateKey to sign the payload
     //We want to provide an algorithmn options
     return jwt.sign(object, privateKey, {
-
         ...(options && options),
         algorithm: 'RS256'
     });
 }
 
 //verify jwt with PUBLIC key
-export function verifyJwt(token: string) {
+export function verifyJwt(token: string, keyName: 'acesssTokenPublicKey' | 'refreshTokenPublicKey') {
 
     try {
         const decoded = jwt.verify(token, publicKey);

@@ -3,6 +3,7 @@ import { createUserSessionHandler } from '../controller/session.controller';
 import { createUserHandler } from '../controller/user.controller';
 import validateResource from '../middleware/validateResource';
 import { createUserSchema } from '../schema/user.schema';
+import { createSessionSchema } from '../schema/session.schema';
 
 
 
@@ -16,7 +17,7 @@ function routes(app: Express) {
     app.post("/api/users", validateResource(createUserSchema), createUserHandler);
 
     //Checking out sessions route
-    app.post("/api/sessions", validateResource(createUserSchema), createUserSessionHandler);
+    app.post("/api/sessions", validateResource(createSessionSchema), createUserSessionHandler);
 
 }
 
