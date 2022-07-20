@@ -1,5 +1,5 @@
 import { Express, Request, Response } from 'express';
-import { createUserSessionHandler, getUserSessionsHander } from '../controller/session.controller';
+import { createUserSessionHandler, getUserSessionsHander, deleteSessionHandler } from '../controller/session.controller';
 import { createUserHandler } from '../controller/user.controller';
 import validateResource from '../middleware/validateResource';
 import { createUserSchema } from '../schema/user.schema';
@@ -22,6 +22,9 @@ function routes(app: Express) {
 
     //Get All Sessions
     app.get('/api/sessions', requireUser, getUserSessionsHander);
+
+    //Delete Sessions
+    app.delete('/api/sessions', requireUser, deleteSessionHandler);
 }
 
 export default routes;

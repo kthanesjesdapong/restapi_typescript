@@ -1,4 +1,4 @@
-import { FilterQuery, SessionOperation } from 'mongoose';
+import { FilterQuery, UpdateQuery } from 'mongoose';
 import SessionModel, { Session } from "../models/session.model";
 
 //Function to create the session, We're creating it with the userId, and the userAgent.
@@ -15,4 +15,9 @@ export async function findSessions(query: FilterQuery<Session>) {
 
 
     return SessionModel.find(query);
+};
+
+// updateParams is of type UpdateQuery and we can pass the Session documents that we defined earlier.
+export async function updateSession(query: FilterQuery<Session>, update: UpdateQuery<Session>) {
+    return SessionModel.updateOne(query, update);
 };

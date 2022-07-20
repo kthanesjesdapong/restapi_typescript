@@ -1,6 +1,6 @@
 import { Request, Response } from 'Express';
 import { validatePassword } from '../service/user.service';
-import { createSession, findSessions } from '../service/session.service';
+import { createSession, findSessions, updateSession } from '../service/session.service';
 import { signJwt } from '../utils/jwt.utils';
 import config from 'config';
 
@@ -50,7 +50,23 @@ export async function getUserSessionsHander(req: Request, res: Response) {
     //We don't want to get any sessions marked as invalid
 
     const sessions = await findSessions({ users: userId, valid: true });
-    console.log(sessions);
     return res.send(sessions);
 }
 
+
+export async function deleteSessionHandler(req: Request, res: Response) {
+
+    // This is safe to access this because of our requireUser Middleware which checks to see if there is a valid user in the first place.
+    const sessionId = res.locals.user.session;
+
+
+    //We're not actually deleting the session, we're just setting it to false, so when we call our find sessions
+    //It doesn't grab this session back for us anymore.
+    await updateSession({ _id: sessionId }, { valid: false });
+
+    return res.send({
+        accessToken: null,
+        refreshToken: null,
+    });
+
+}
