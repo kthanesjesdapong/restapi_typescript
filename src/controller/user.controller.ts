@@ -11,7 +11,7 @@ export async function createUserHandler(req: Request<{}, {}, CreateUserInput['bo
     try {
         const user = await createUser(req.body);
         //In postman we dont want the password back, so we'll omit it.
-        return res.send(omit(user.toJSON(), 'password'));
+        return res.send(omit(user, 'password'));
     } catch (e: any) {
         logger.error(e);
         return res.status(409).send(e.message);

@@ -6,7 +6,7 @@ export const createSessionSchema = object({
             required_error: 'Email is required'
         }),
         password: string({
-            required_error: 'PassWord is required'
+            required_error: 'Password is required'
         })
     })
 });
