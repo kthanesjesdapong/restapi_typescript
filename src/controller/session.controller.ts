@@ -32,7 +32,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
     //Create a Refresh token
     const refreshToken = signJwt(
         { ...user, session: session._id },
-        { expiresIn: config.get('accessTokenTtl') }
+        { expiresIn: config.get('refreshTokenTtl') }
     );
 
     //Return Access && Refresh tokens
