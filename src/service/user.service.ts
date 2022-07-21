@@ -1,6 +1,6 @@
 import { DocumentDefinition, FilterQuery } from 'mongoose';
 import { omit } from 'lodash';
-import UserModel, { User } from '../models/user.models';
+import UserModel, { User } from '../models/user.model';
 
 //DocumentDefinition is a generic type, so import our User interface that comes from our UserDocuments
 

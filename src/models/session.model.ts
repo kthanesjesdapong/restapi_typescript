@@ -1,7 +1,7 @@
 import mongoose, { Schema, model } from "mongoose";
 import bcrpyt from 'bcrypt';
 import config from 'config';
-import { User } from './user.models';
+import { User } from './user.model';
 
 //Interface representing a document in MongoDB
 export interface Session extends mongoose.Document {
