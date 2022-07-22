@@ -34,14 +34,14 @@ function routes(app: Express) {
         [requireUser, validateResource(createProductSchema)], createProductHandler);
 
     //Update Products
-    app.put('/api/products',
+    app.put('/api/products/:productId',
         [requireUser, validateResource(updateProductSchema)], updateProductHandler);
 
     //Get Products
-    app.get('/api/products', validateResource(readProductSchema), readProductHandler);
+    app.get('/api/products/:productId', validateResource(readProductSchema), readProductHandler);
 
     //Delete Products
-    app.delete('/api/products', [requireUser, validateResource(deleteProductSchema)], deleteProducthandler);
+    app.delete('/api/products/:productId', [requireUser, validateResource(deleteProductSchema)], deleteProducthandler);
 }
 
 export default routes;

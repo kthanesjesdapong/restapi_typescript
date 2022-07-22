@@ -51,7 +51,7 @@ export async function updateProductHandler(req: Request<UpdateProductInput['para
     }
 
     //If the user creating the product isnt the one updating it, send a forbidden
-    if (product.user !== userId) {
+    if (String(product.user) !== userId) {
         return res.sendStatus(403);
     }
 
@@ -76,7 +76,7 @@ export async function deleteProducthandler(req: Request, res: Response) {
     }
 
     //If the user creating the product isnt the one deleting it, send a forbidden
-    if (product.user !== userId) {
+    if (String(product.user) !== userId) {
         return res.sendStatus(403);
     }
 
