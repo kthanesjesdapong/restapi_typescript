@@ -1,7 +1,3 @@
 #Introduction
 
-This project was created using
--TypeScript
--MongoDB
--Zod
--Express
+This project was created using *TypeScript *Zod *Express *MongoDB 
