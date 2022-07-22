@@ -5,8 +5,9 @@ import validateResource from '../middleware/validateResource';
 import { createUserSchema } from '../schema/user.schema';
 import { createSessionSchema } from '../schema/session.schema';
 import requireUser from '../middleware/requireUser';
-import { createProductSchema } from '../schema/product.schema';
-import { createProductHandler } from '../controller/product.controller';
+import { createProductSchema, deleteProductSchema, readProductSchema, updateProductSchema } from '../schema/product.schema';
+import { createProductHandler, deleteProducthandler, readProductHandler, updateProductHandler } from '../controller/product.controller';
+import validate from '../middleware/validateResource';
 
 
 
@@ -28,8 +29,19 @@ function routes(app: Express) {
     //Delete Sessions
     app.delete('/api/sessions', requireUser, deleteSessionHandler);
 
+    //Create Products
     app.post('/api/products',
         [requireUser, validateResource(createProductSchema)], createProductHandler);
+
+    //Update Products
+    app.put('/api/products',
+        [requireUser, validateResource(updateProductSchema)], updateProductHandler);
+
+    //Get Products
+    app.get('/api/products', validateResource(readProductSchema), readProductHandler);
+
+    //Delete Products
+    app.delete('/api/products', [requireUser, validateResource(deleteProductSchema)], deleteProducthandler);
 }
 
 export default routes;

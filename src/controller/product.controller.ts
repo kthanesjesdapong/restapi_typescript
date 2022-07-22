@@ -24,7 +24,7 @@ export async function createProductHandler(req: Request<{}, {}, CreateProductInp
     }
 }
 
-export async function getProductHandler(req: Request, res: Response) {
+export async function readProductHandler(req: Request, res: Response) {
 
     const { productId } = req.params;
     const product = await findProduct({ productId });
