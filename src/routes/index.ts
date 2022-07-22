@@ -5,6 +5,8 @@ import validateResource from '../middleware/validateResource';
 import { createUserSchema } from '../schema/user.schema';
 import { createSessionSchema } from '../schema/session.schema';
 import requireUser from '../middleware/requireUser';
+import { createProductSchema } from '../schema/product.schema';
+import { createProductHandler } from '../controller/product.controller';
 
 
 
@@ -25,6 +27,9 @@ function routes(app: Express) {
 
     //Delete Sessions
     app.delete('/api/sessions', requireUser, deleteSessionHandler);
+
+    app.post('/api/products',
+        [requireUser, validateResource(createProductSchema)], createProductHandler);
 }
 
 export default routes;

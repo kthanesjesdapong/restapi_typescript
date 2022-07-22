@@ -54,11 +54,14 @@ export const getProductSchema = object({
 });
 
 
-//Defining the type with the schema defined earlier.
-export type createProductInput = TypeOf<typeof createProductSchema>;
-export type updateProductSchema = TypeOf<typeof updateProductSchema>;
-export type deleteProductSchema = TypeOf<typeof deleteProductSchema>;
-export type getProductSchema = TypeOf<typeof getProductSchema>;
+
+//Our CRUD operations
+//Here we are defining the types based off of the schemas we've prodvided earlier
+//We're passing this down to our controller in our params
+export type CreateProductInput = TypeOf<typeof createProductSchema>;
+export type ReadProductInput = TypeOf<typeof getProductSchema>;
+export type UpdateProductInput = TypeOf<typeof updateProductSchema>;
+export type DeleteProductInput = TypeOf<typeof deleteProductSchema>;
 
 
 
