@@ -20,7 +20,7 @@ yarn add
 
 # Breakdown of Each Directory
 
-## config
+## Config
 ```
 within our config file, you'll notice a default.ts here we host information such as
 - The Port, we're using
@@ -32,11 +32,16 @@ within our config file, you'll notice a default.ts here we host information such
 - privateKey, our privateKey needed for Verifying a jwt.
 ```
 
-## controller
+## Controller
+
+# The Controller is the logic we insert into our routes
 ```
 Everything in our controller has our logic that controls the way a user interacts with our MVC model. 
 This determines what responses is sent back to the user based on the parameters/ queries they pass through.
 It interacts with both the model and the View.
+
+
+
 
 - Think of Controllers as the managers
  - manages the incoming work requests
@@ -48,7 +53,7 @@ It interacts with both the model and the View.
 
 ```
 
-## middleware
+## Middleware
 ### within our middleware we have middleware that we are passing onto routes that may requried them 
 ```
 - deserializeUser, takes either the access token and we verify the Jwt to ensure that we have the correct accessToken for the user and if their refreshToken is attached && their accesstoken is expired we issue a new accessToken for the user.
@@ -58,7 +63,7 @@ It interacts with both the model and the View.
 - validateResources, this middleware is attached to routes that require us to update,create, or get a specific information concering the item. it ensures that the requests we're sending are valid per schema.
 ```
 
-## models
+## Models
 ```
 - Withing our models directory we're defining the types based off of the mongooseDocument so we can use specific methods associated with Document.
 ie(find, findByone, etc...
@@ -68,17 +73,17 @@ ie(find, findByone, etc...
 -and finally create models, that fit the document, and the schema.
 ```
 
-## routes
+## Routes
 ```
 Within our routes, we are validating the request the user makes per schema of the route and attaching functions which needs to be called per route
 ```
 
-## schema
+## Schema
 ```
 The schema directory is the schema type that is to be passed into our handler function so the parameters understand the types of data we're interacting with.
 ```
 
-## service
+## Service
 ```
 The service directory are functions whose return values are dependent on the model, and we generally use these within our controller.
 - Think of service as the workers
@@ -90,7 +95,7 @@ The service directory are functions whose return values are dependent on the mod
   - returns the completed work to the manager
 ```
 
-## utils
+## Utils
 ```
 Within our utils folder we have
 
